@@ -5,10 +5,15 @@ Personal Arch Linux + Hyprland dotfiles
 
 ## Packages used
 > Hyprland
+
 > Waybar
+
 > neovim - NvChad's Config
+
 > fastfetch / neofetch
+
 > wofi
+
 > hyprbars
 
 # Screenshots
