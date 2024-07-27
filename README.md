@@ -15,45 +15,45 @@ Personal Arch Linux + Hyprland dotfiles
 
 <summary>Packages to be installed</summary>
 
-# Essential packages for rice to work
+### Essential packages for rice to work
 
 Run this install command to get the essential packages
 ```
 yay -S waybar hyprland dunst hyprshot hyprpicker brightness brightnessctl light  kitty swww wofi wl-clipboard swaylock-effects pamixer btop cliphist xdg-desktop-portal-hyprland pywal cava-git fastfetch neovim
 ```
 
-# Fonts
+### Fonts
 Comic Mono
 Fansaque Mono
 ```
 yay -S ttf-comic-mono-git ttf-fantasque-sans-mono
 ```
 
-# Hyprland plugins : hyprdots
+### Hyprland plugins : hyprdots
 ```
 yay -S cmake meson brillo cpio hyprwayland-scanner
 hyprpm add https://github.com/hyprwm/hyprland-plugins
 ```
-# Debug and quality-of-life-update packages
+### Debug and quality-of-life-update packages
 ```
 yay -S tlp gdb wev libinput-gestures gdu fim gammastep
 ```
 
-# Set gtk theme
+### Set gtk theme
 ```
 yay -S nwg-look
 ```
 
-# Terminal fun
+### Terminal fun
 ```
 yay -S lolcat bat tetris-tui-git cowsay gnome-mines pipes.c cmatrix asciiquarium
 ```
-# Spotify, youtube and pdf manipulation
+### Spotify, youtube and pdf manipulation
 ```
 yay -S ytermusic ncspot ytfzf pdftk
 ```
 
-# Miscellaneous
+### Miscellaneous
 ```
 yay -S openfortivpn kicad kicad-libary kicad-library-3d obs trasnmision vscodium chrome pinta discord betterdiscordctl
 ```
