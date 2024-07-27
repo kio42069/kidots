@@ -1,0 +1,2 @@
+#!/bin/bash
+tofi-drun --font-size=12 --font=iosevka --background-color=#0C0E0F --outline-width=2 --border-width=2 --border-color=#9d9dff --prompt-text="wassup: " --prompt-color=#94b0d0 --input-color=aaffaa --default-result-color=#aaaadd --selection-color=#0000ff --selection-match-color=#a32345 --selection-background=#aaaaff --selection-background-corner-radius=1 --width=400 --height=200 --fuzzy-match=true

@@ -1,0 +1,172 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 33,
+    "modules-left": ["hyprland/workspaces","custom/playerctl"],
+    "modules-center": ["clock", "cava"],
+    "modules-right": ["temperature","custom/power_profile","battery","pulseaudio#microphone","pulseaudio","backlight","tray"],
+    "hyprland/window": {
+        "format": "{}"
+    },
+"cava": {
+        "cava_config": "~.config/cava/cava_config",
+        "framerate": 30,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+    "hyprland/workspaces": {
+        //"format": "{icon}",
+        "disable-scroll": false,
+        "all-outputs": true,
+        "on-click": "activate",
+        //"format-icons": {
+        //"active": " 󰮯 ",
+        //"default": "  ",
+        //"empty": "  "
+        //},
+    },
+    
+    //"custom/power_profile":{
+        //shows the current power profile and switches to next on click
+    //    "exec": "asusctl profile -p | sed s:'Active profile is'::",
+    //    "interval": 30,
+    //    "format": "󰈐{}", 
+    //    "on-click": "asusctl profile -n; pkill -SIGRTMIN+8 waybar",
+    //    "signal": 8
+    //},
+ 
+    "custom/playerctl": {
+      "format": "{icon}   ::  <span>{}</span>",
+      "return-type": "json",
+      "max-length": 64,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click": "playerctl play-pause",
+      "on-click-middle": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#13df44'>󰝚</span>",
+        "Paused": "<span foreground='#df1344'>󰝛</span>"
+      }
+    },
+
+ 
+    "custom/weather" : {
+        // shows the current weather and forecast
+        "tooltip" : true,
+        "format" : "{}",
+        "interval" : 30,
+        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
+        "return-type" : "json"
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "  {:%I:%M %p (%Z)}",
+        "format-alt": "  {:%I:%M %p (%Z)  %a, %b %e}",
+        "tooltip-format": "<big>  {:%a, %b %e}</big>\n<tt></tt>\n{tz_list}",
+        "on-click": "~/.config/hypr/scripts/yellowchains.sh",
+        "timezones": ["Asia/Kolkata","Canada/Mountain","Europe/Moscow","America/New_York"]
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-click": "hyprctl dispatch togglespecialworkspace",
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "min-length": 6
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " Muted",
+        "on-click": "pamixer -t",
+        "on-scroll-up": "pamixer -i 1",
+        "on-scroll-down": "pamixer -d 1",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "Mic: {volume}%",
+        "format-source-muted": "Mic: Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+    
+    "temperature": {
+        "thermal-zone": 1,
+        "format": "{temperatureC}°C ",
+        "critical-threshold": 70,
+        "format-critical": "{temperatureC}°C "
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    },
+
+    "bluetooth": {
+	    "format": " {status}",
+	    "format-disabled": "", // an empty format will hide the module
+	    "format-connected": " {num_connections}",
+	    "tooltip-format": "{device_alias}",
+	    "tooltip-format-connected": " {device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}"
+    }
+}

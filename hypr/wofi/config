@@ -1,0 +1,12 @@
+style=$HOME/.config/wofi/style.css
+xoffset=810
+yoffset=400
+show=drun
+width=300
+height=300
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+insensitive=true
+prompt=

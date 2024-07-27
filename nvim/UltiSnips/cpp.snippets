@@ -1,0 +1,125 @@
+snippet fori "iterate over i" b
+for(int i = 0; i < ${1:count}; ++i){
+	$2
+}
+endsnippet
+
+snippet forj "iterate over j" b
+for(int j = 0; j < ${1:count}; ++j){
+	$2
+}
+endsnippet
+
+snippet ffori "iterate i to 0" b
+for(int i = ${1:count}; i >= 0; --i){
+	$2
+}
+endsnippet
+
+snippet forelem "every element" b
+for(const auto &i: ${1:a}){
+
+}
+endsnippet
+
+snippet mii "map int int" b
+map<int,int> $1
+endsnippet
+
+snippet msi "map string int" b
+map<string, int> $1
+endsnippet
+
+snippet mci "map char int" b
+map<char, int> $1
+endsnippet
+
+snippet vec "std::vector" b
+vector<${1:int}>
+endsnippet
+
+snippet inc "include" b
+#include <${1:iostream}>
+endsnippet
+
+snippet iter "vector iterate" b
+${1:a}.begin(),${1:a}.end()
+endsnippet
+
+snippet cptemp "template" b
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+
+using namespace std;
+using namespace __gnu_pbds;
+
+// #define int long long
+
+typedef long long ll;
+typedef unsigned long long ull;
+const char newl = '\n';
+const int MOD = 1e9 + 7;
+#define CEIL(m,n) ((m)/(n))+(((m)%(n))!=0)
+
+#define all(v) (v).begin(),(v).end()
+
+typedef priority_queue<int> PQ;
+typedef priority_queue<int,vector<int>,greater<int>> MPQ;
+typedef tree<int,null_type,less<int>,rb_tree_tag,
+	    	 tree_order_statistics_node_update> indexed_set;
+// find_by_order, order_of_key
+
+//fnc
+
+void solve(){$1}
+
+signed main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t; cin >> t; while(t--) solve();
+    // solve();
+}
+/*
+ *
+ *
+ *
+ */
+endsnippet
+
+snippet ov "output vector" b
+for(const auto &item: $1){
+	cout << item << ' ';
+}
+cout << '\n';
+endsnippet
+
+snippet dsu "disjoint set union" b
+const int N = 200001;
+
+int lnk[N];
+int sz[N];
+
+void dsu_init(int n){
+    for(int i = 1; i <= n; ++i){
+        lnk[i] = i;
+        sz[i] = 1;
+    }
+}
+
+int find(int x){
+    while(x != lnk[x]) x = lnk[x];
+    return x;
+}
+
+bool unite(int a, int b){
+    a = find(a);
+    b = find(b);
+    if(a == b)
+        return false;
+    if(sz[a] < sz[b]) swap(a,b);
+    sz[a] += sz[b];
+    lnk[b] = a;
+    return true;
+}
+endsnippet
