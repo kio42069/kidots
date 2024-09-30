@@ -1,0 +1,94 @@
+#theme = "iTerm-Default"
+
+[colors.bright]
+black = "#a6accd"
+blue = "#add7ff"
+cyan = "#89ddff"
+green = "#5de4c7"
+magenta = "#fae4fc"
+red = "#d0679d"
+white = "#ffffff"
+yellow = "#fffac2"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.normal]
+black = "#1b1e28"
+blue = "#b2d4fa"
+cyan = "#add7ff"
+green = "#5de4c7"
+magenta="#EC863E"
+red = "#d0679d"
+white = "#ffffff"
+yellow = "#fffac2"
+
+[colors.primary]
+#background = "#131621"
+#foreground = "#a6accd"
+background = "#0C0E0F"
+foreground = "#b2d4fa"
+
+[colors.search.focused_match]
+background = "#add7ff"
+foreground = "#1b1e28"
+
+[colors.search.matches]
+background = "#add7ff"
+foreground = "#1b1e28"
+
+[colors.selection]
+background = "#303340"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor]
+style = "Beam"
+vi_mode_style = "Underline"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 11
+
+[font.bold]
+family = "ComicMono"
+style = "Bold"
+
+[font.glyph_offset]
+y = 0
+
+[font.italic]
+family = "ComicMono"
+style = "Italic"
+
+[font.normal]
+family = "FantasqueSansMono"
+style = "Regular"
+
+[font.offset]
+y = 0
+
+[scrolling]
+history = 1000
+multiplier = 3
+
+[window]
+decorations = "none"
+opacity = 0.7
+
+[window.dimensions]
+columns = 80
+lines = 35
+
+[window.padding]
+x = 10
+y = 10
+
+#[keyboard]
+#bindings = [{key = "Return", mods = "Shift", action = "SpawnNewInstance"}]

@@ -3,7 +3,7 @@
 raise_volume() {
     if [[ $(pamixer --get-volume) -lt 120 ]]; then
         pamixer --unmute
-        pactl set-sink-volume @DEFAULT_SINK@ +5%
+        pactl set-sink-volume @DEFAULT_SINK@ +3%
     else
         pactl set-sink-volume @DEFAULT_SINK@ 120%
     fi
@@ -13,7 +13,7 @@ raise_volume() {
 
 lower_volume() {
     pamixer --unmute
-    pactl set-sink-volume @DEFAULT_SINK@ -5%
+    pactl set-sink-volume @DEFAULT_SINK@ -3%
     current_volume=$(pamixer --get-volume)
     notify-send -i ~/.config/dunst/assets/ui/volume_down.png -h string:x-canonical-private-synchronous:sys-notify $current_volume
 }

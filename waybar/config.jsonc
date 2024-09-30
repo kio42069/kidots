@@ -6,7 +6,7 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 33,
-    "modules-left": ["hyprland/workspaces","custom/playerctl"],
+    "modules-left": ["hyprland/workspaces" ,"mpris"],
     "modules-center": ["clock", "cava"],
     "modules-right": ["temperature","custom/power_profile","battery","pulseaudio#microphone","pulseaudio","backlight","tray"],
     "hyprland/window": {
@@ -39,6 +39,7 @@
         "disable-scroll": false,
         "all-outputs": true,
         "on-click": "activate",
+        "persistent-workspaces":{"*":5} 
         //"format-icons": {
         //"active": " 󰮯 ",
         //"default": "  ",
@@ -55,11 +56,13 @@
     //    "signal": 8
     //},
  
-    "custom/playerctl": {
-      "format": "{icon}   ::  <span>{}</span>",
-      "return-type": "json",
+   
+
+   "custom/playerctl": {
+      "format": "{icon}::>",
+      //"return-type": "json",
       "max-length": 64,
-      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      //"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
       "on-click": "playerctl play-pause",
       "on-click-middle": "playerctl previous",
       "on-click-right": "playerctl next",
@@ -68,6 +71,22 @@
         "Paused": "<span foreground='#df1344'>󰝛</span>"
       }
     },
+    
+
+"mpris": {
+	"format": "{player_icon} :: {dynamic}",
+	//"format-paused": "{status_icon} <u>{dynamic}</u>",
+	"format-paused": "{status_icon} :: {dynamic}",
+	"player-icons": {
+		"default": "🍃",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "🍷"
+	},
+	"ignored-players": ["musikcube"]
+},
+
 
  
     "custom/weather" : {
@@ -85,8 +104,9 @@
     },
 
     "clock": {
-        "format": "  {:%I:%M %p (%Z)}",
-        "format-alt": "  {:%I:%M %p (%Z)  %a, %b %e}",
+        //"format": "  {:%I:%M %p (%Z)}",
+        //"format-alt": "  {:%I:%M %p (%Z)  %a, %b %e}",
+        "format": "  {:%I:%M %p (%Z)  %a, %b %e}",
         "tooltip-format": "<big>  {:%a, %b %e}</big>\n<tt></tt>\n{tz_list}",
         "on-click": "~/.config/hypr/scripts/yellowchains.sh",
         "timezones": ["Asia/Kolkata","Canada/Mountain","Europe/Moscow","America/New_York"]

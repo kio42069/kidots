@@ -68,6 +68,7 @@ tooltip {
 #workspaces,
 #tray,
 #custom-playerctl,
+#mpris,
 #backlight {
     background: #1e1e2e;
     opacity: 0.8;
@@ -77,12 +78,20 @@ tooltip {
     border: 1px solid #181825;
 }
 
-#custom-playerctl{
+#custom-playerctl,
+#mpris
+{
     border-radius: 20px;
     color: #b2d4fa;
     margin-left: 5px;
 }
 
+#mpris.paused{
+    color:#ff4444;   
+}
+#mpris.playing{
+    color:#99ff99;   
+}
 #temperature {
     border-radius: 20px 0px 0px 20px;
 }
@@ -97,8 +106,8 @@ tooltip {
         color: #ffffff;
     }
 }
-#battery.critical:not(.charging),
-#battery.warning:not(.charging)
+#battery.critical:not(.charging)
+/*#battery.warning:not(.charging)*/
 {
     color: #ff0000;
     animation-name: blink;
@@ -141,7 +150,8 @@ tooltip {
 }
 
 #clock {
-    color: #fab387;
+    /*color: #fab387;*/
+    color: #54ffff;
     border-radius: 20px;
     margin-left: 5px;
     border-right: 0px;

@@ -1,0 +1,2 @@
+netcat -l port > baller.txt
+cat balls | netcat ip port -q 0
