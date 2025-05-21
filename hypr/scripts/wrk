@@ -1,0 +1,2 @@
+va=$(hyprctl activeworkspace | grep "workspace ID")
+echo ${va:13:-22} | python ~/.config/hypr/scripts/notify_pipe.py -n work

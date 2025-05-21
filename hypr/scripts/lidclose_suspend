@@ -1,0 +1,5 @@
+while read label value < /proc/acpi/button/lid/LID0/state
+do
+    [ "$value" = closed ] && systemctl suspend && swaylock
+    sleep 2
+done

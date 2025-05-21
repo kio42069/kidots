@@ -1,48 +1,52 @@
-#theme = "iTerm-Default"
+[general]
+import = [
+  # "~/.cache/wal/colors-alacritty.toml"
+]
 
-[colors.bright]
-black = "#a6accd"
-blue = "#add7ff"
-cyan = "#89ddff"
-green = "#5de4c7"
-magenta = "#fae4fc"
-red = "#d0679d"
-white = "#ffffff"
-yellow = "#fffac2"
 
-[colors.cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
-[colors.normal]
-black = "#1b1e28"
-blue = "#b2d4fa"
-cyan = "#add7ff"
-green = "#5de4c7"
-magenta="#EC863E"
-red = "#d0679d"
-white = "#ffffff"
-yellow = "#fffac2"
-
-[colors.primary]
-background = "#0C0E0F"
-foreground = "#b2d4fa"
-
-[colors.search.focused_match]
-background = "#add7ff"
-foreground = "#1b1e28"
-
-[colors.search.matches]
-background = "#add7ff"
-foreground = "#1b1e28"
-
-[colors.selection]
-background = "#303340"
-text = "CellForeground"
-
-[colors.vi_mode_cursor]
-cursor = "CellForeground"
-text = "CellBackground"
+# [colors.bright]
+# black = "#a6accd"
+# blue = "#add7ff"
+# cyan = "#89ddff"
+# green = "#5de4c7"
+# magenta = "#fae4fc"
+# red = "#d0679d"
+# white = "#ffffff"
+# yellow = "#fffac2"
+#
+# [colors.cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
+#
+# [colors.normal]
+# black = "#1b1e28"
+# blue = "#b2d4fa"
+# cyan = "#add7ff"
+# green = "#5d00c7"
+# magenta="#EC863E"
+# red = "#d0679d"
+# white = "#ffffff"
+# yellow = "#fffac2"
+#
+# [colors.primary]
+# background = "#000000"
+# foreground = "#b2d4fa"
+#
+# [colors.search.focused_match]
+# background = "#add7ff"
+# foreground = "#1b1e28"
+#
+# [colors.search.matches]
+# background = "#add7ff"
+# foreground = "#1b1e28"
+#
+# [colors.selection]
+# background = "#303340"
+# text = "CellForeground"
+#
+# [colors.vi_mode_cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
 
 [cursor]
 style = "Beam"
@@ -50,24 +54,25 @@ vi_mode_style = "Underline"
 
 [env]
 TERM = "xterm-256color"
+ZDOTDIR = "/home/surt"
 
 [font]
 size = 10
 
 [font.bold]
 # family = "klartextmono"
-family = "JetBrains Mono"
+family = "HurmitNerdFontMono"
 style = "Bold"
 
 [font.glyph_offset]
 y = 0
 
 [font.italic]
-family = "JetBrains Mono"
+family = "HurmitNerdFontMono"
 style = "Italic"
 
 [font.normal]
-family = "JetBrains Mono"
+family = "HurmitNerdFontMono"
 style = "Regular"
 
 [font.offset]
@@ -79,7 +84,7 @@ multiplier = 3
 
 [window]
 decorations = "none"
-opacity = 0.95
+opacity = 0.7
 
 [window.dimensions]
 columns = 80
@@ -89,5 +94,10 @@ lines = 35
 x = 10
 y = 10
 
-#[keyboard]
-#bindings = [{key = "Return", mods = "Shift", action = "SpawnNewInstance"}]
+[keyboard]
+bindings = [{key = "Return", mods = "Shift", action = "SpawnNewInstance"}]
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+

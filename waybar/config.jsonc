@@ -2,49 +2,51 @@
     "layer": "top",
     "position": "top",
     "mod": "dock",
+    "output": ["eDP-1","HDMI-A-1"],
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 33,
-    "modules-left": ["hyprland/workspaces" ,"mpris"],
-    "modules-center": ["clock", "cava"],
-    "modules-right": ["temperature","custom/power_profile","battery","pulseaudio#microphone","pulseaudio","backlight","tray"],
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["clock"],
+    "modules-right": ["cava","battery","pulseaudio#microphone","pulseaudio","backlight", "tray"],
     "hyprland/window": {
         "format": "{}"
     },
-"cava": {
-        "cava_config": "~.config/cava/cava_config",
-        "framerate": 30,
-        "autosens": 1,
-        "sensitivity": 100,
-        "bars": 14,
-        "lower_cutoff_freq": 50,
-        "higher_cutoff_freq": 10000,
-        "method": "pulse",
-        "source": "auto",
-        "stereo": true,
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.77,
-        "input_delay": 2,
+  "cava": {
+        "cava_config": "/home/surt/.config/cava/config",
         "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
-        "actions": {
-                   "on-click-right": "mode"
-                   }
-    },
+        "bars": 30,
+        "bar_delimiter": 0,
+        "method": "pipewire",
+        "input_delay": 8,
+            "gradient": {
+        "type": "horizontal",
+        "colors": ["#ff0000", "#ff8000", "#ffff00", "#80ff00", "#00ff00"]
+    }
+  },
+
     "hyprland/workspaces": {
-        //"format": "{icon}",
-        "disable-scroll": false,
+       "format": "{icon}",
+        "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
-        "persistent-workspaces":{"*":5} 
-        //"format-icons": {
+        "persistent-workspaces":{"*":10},
+        "format-icons": {
+        "1":"1",
+        "2":"2",
+        "3":"3",
+        "4":"4",
+        "5":"5",
+        "6":"6",
+        "7":"7",
+        "8":"8",
+        "9":"9",
+
         //"active": " 󰮯 ",
-        //"default": "  ",
-        //"empty": "  "
-        //},
+        "default": "  ",
+        "empty": "  "
+        }
     },
     
     //"custom/power_profile":{
@@ -74,9 +76,13 @@
     
 
 "mpris": {
-	"format": "{player_icon} :: {dynamic}",
-	//"format-paused": "{status_icon} <u>{dynamic}</u>",
-	"format-paused": "{status_icon} :: {dynamic}",
+        "on-scroll-up": "pamixer -i 3",
+        "on-scroll-down": "pamixer -d 3",
+	//"format": "{player_icon} {title} :: {artist}",
+	//"format-paused": "{status_icon} {title} :: {artist}",
+	"format": "{player_icon} ::",
+	"format-paused": "{status_icon} :: ",
+  "max-length":50,
 	"player-icons": {
 		"default": "🍃",
 		"mpv": "🎵"
@@ -84,7 +90,8 @@
 	"status-icons": {
 		"paused": "🍷"
 	},
-	"ignored-players": ["musikcube"]
+  "interval":1,
+	//"ignored-players": ["musikcube"]
 },
 
 
@@ -93,9 +100,10 @@
         // shows the current weather and forecast
         "tooltip" : true,
         "format" : "{}",
-        "interval" : 30,
+        "interval" : 3600,
         "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
+        "return-type" : "json",
+        "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh"
     },
 
     "tray": {
@@ -104,12 +112,15 @@
     },
 
     "clock": {
-        //"format": "  {:%I:%M %p (%Z)}",
-        //"format-alt": "  {:%I:%M %p (%Z)  %a, %b %e}",
-        "format": "  {:%I:%M %p (%Z)  %a, %b %e}",
-        "tooltip-format": "<big>  {:%a, %b %e}</big>\n<tt></tt>\n{tz_list}",
-        "on-click": "~/.config/hypr/scripts/yellowchains.sh",
-        "timezones": ["Asia/Kolkata","Canada/Mountain","Europe/Moscow","America/New_York"]
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "format": "  {:%I:%M:%S %p (%Z)}",
+        "format-alt": "  {:%I:%M %p (%Z)  %a, %b %e}",
+        "tooltip": false,
+        "interval": 1,
+        "on-click": "hyprctl dispatch togglespecialworkspace z && hyprctl dispatch togglespecialworkspace z",
+        "on-click-right": "hyprshot -m region",
+        "on-click-middle": "pkill gammastep || gammastep -P -O 4500"
     },
 
     "backlight": {
@@ -117,12 +128,15 @@
         "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
         "on-click": "hyprctl dispatch togglespecialworkspace",
+        "on-click-right": "hyprctl dispatch togglespecialworkspace a",
         "on-scroll-up": "brightnessctl set 1%+",
         "on-scroll-down": "brightnessctl set 1%-",
         "min-length": 6
     },
 
     "battery": {
+        "on-click": "hyprctl dispatch workspace -1",
+        "on-click-right": "hyprctl dispatch workspace +1",
         "states": {
             "good": 95,
             "warning": 30,
@@ -131,7 +145,7 @@
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
+        //"format-alt": "{time} {icon}",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
 
@@ -140,8 +154,8 @@
         "tooltip": false,
         "format-muted": " Muted",
         "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 1",
-        "on-scroll-down": "pamixer -d 1",
+        "on-scroll-up": "pamixer -i 2",
+        "on-scroll-down": "pamixer -d 2",
         "scroll-step": 5,
         "format-icons": {
             "headphone": "",
